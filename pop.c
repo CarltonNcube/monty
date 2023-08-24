@@ -10,17 +10,16 @@
  * @stack: Pointer to the top of the stack.
  * @line_number: Line number in the file where the operation is performed.
  */
-
 void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
 
-	if (!*stack)
+	if (!temp)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	*stack = (*stack)->next;
+	*stack = temp->next;
 	if (*stack)
 	{
 		(*stack)->prev = NULL;
